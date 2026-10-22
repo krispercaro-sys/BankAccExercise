@@ -1,14 +1,20 @@
 package banksys;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BankAccount {
 
     private double balance;
 
     private boolean isFrozen;
 
+    private List<Transaction> transactionHistory;
+
     public BankAccount() {
         this.balance = 0.0;
         this.isFrozen = false;
+        this.transactionHistory = new ArrayList<>();
     }
 
     public void deposit(double amount) {
@@ -26,6 +32,8 @@ public class BankAccount {
 
         this.balance += amount;
         System.out.printf("Current balance: %.2f%n", this.balance);
+
+         this.transactionHistory.add(new Transaction("Deposit", amount));
     }
 
     public void withdraw(double amount) {

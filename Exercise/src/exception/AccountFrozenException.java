@@ -1,0 +1,30 @@
+package exception;
+
+/**
+ * Custom exception thrown when operations are performed on a frozen bank account.
+ */
+public class AccountFrozenException extends Exception {
+
+  /** Holds the error message passed from the constructor. */
+  private String message;
+
+  /**
+   * Constructs an AccountFrozenException with the specified error message.
+   *
+   * @param message the detail message describing the exception condition
+   */
+  public AccountFrozenException(String message) {
+    super(message);
+    this.message = message;
+  }
+
+  /**
+   * Returns the detail message string of this exception.
+   *
+   * @return the detail message string
+   */
+  @Override
+  public String getMessage() {
+    return this.message;
+  }
+}

@@ -5,7 +5,19 @@ package banksys;
  */
 public class Bank {
 
-  public void addAccount(BankAccount account){}
+  /**
+   * Adds a bank account.
+   *
+   * @param account the bank account to add
+   */
+  public void addAccount(BankAccount account) {
+  }
 
-  public void getAccount(int id){}
+  /**
+   * Retrieves an account by its ID.
+   *
+   * @param id the account ID
+   */
+  public void getAccount(int id) {
+  }
 }

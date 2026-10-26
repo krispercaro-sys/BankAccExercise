@@ -1,10 +1,14 @@
 package banksys;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
- * Manages bank accounts, handling account storage, creation, and listing operations.
+ * Manages bank accounts, handling storage, filtering, and sorting of transactions.
  */
 public class BankAccountManager {
 
@@ -22,7 +26,7 @@ public class BankAccountManager {
   /**
    * Adds a new bank account if the storage limit has not been reached.
    *
-   * 
+   * @param account the account to be added
    */
   public void addAccount(BankAccount account) {
     if (accounts.size() >= 100) {
@@ -55,5 +59,31 @@ public class BankAccountManager {
           account.getBalance()
       );
     }
+  }
+
+  /**
+   * Filters transactions at or above a specified amount using a lambda expression with Predicate.
+   *
+   * @param amount the minimum threshold amount
+   * @param txList the list of transactions to filter
+   * @return a filtered list containing transactions at or above the threshold
+   */
+  public List<Transaction> filterTransactionsAtOrAbove(double amount, List<Transaction> txList) {
+    Predicate<Transaction> filterCondition = tx -> tx.getAmount() >= amount;
+    return txList.stream()
+        .filter(filterCondition)
+        .collect(Collectors.toList());
+  }
+
+  /**
+   * Sorts transactions by amount in ascending order using a lambda expression.
+   *
+   * @param txList the list of transactions to sort
+   * @return a new list sorted by transaction amount in ascending order
+   */
+  public List<Transaction> sortTransactionsByAmount(List<Transaction> txList) {
+    List<Transaction> sortedList = new ArrayList<>(txList);
+    sortedList.sort((t1, t2) -> Double.compare(t1.getAmount(), t2.getAmount()));
+    return sortedList;
   }
 }

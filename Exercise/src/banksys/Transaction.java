@@ -4,17 +4,20 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Stores user transaction.
+ * Stores user transaction information.
  */
 public class Transaction {
 
   private String type;
   private double amount;
   private LocalDateTime timestamp;
-  /**
-   * Initialization of transaction.
-   */
 
+  /**
+   * Initializes a new Transaction with type and amount.
+   *
+   * @param type the transaction type (e.g., Deposit, Withdraw)
+   * @param amount the monetary value of the transaction
+   */
   public Transaction(String type, double amount) {
     this.type = type;
     this.amount = amount;
@@ -34,9 +37,11 @@ public class Transaction {
   }
 
   @Override
-    public String toString() {
+  public String toString() {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    return String.format("Transaction [type=%s, amount=%s, time_stamp=%s]", 
-            type, amount, timestamp.format(formatter));
+    return String.format(
+        "Transaction [type=%s, amount=%s, time_stamp=%s]",
+        type, amount, timestamp.format(formatter)
+    );
   }
 }

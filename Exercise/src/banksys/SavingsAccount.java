@@ -1,15 +1,11 @@
 package banksys;
 
+/**
+ * Saves Bank account.
+ */
 public class SavingsAccount extends BankAccount {
 
-    private String ownerName;
-
-    public SavingsAccount(String ownerName) {
-        super();
-        this.ownerName = ownerName;
-    }
-
-    public String getOwnerName() {
-        return this.ownerName;
-    }
+  public SavingsAccount(String ownerName) {
+    super(ownerName); 
+  }
 }

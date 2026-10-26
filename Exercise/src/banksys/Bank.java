@@ -1,5 +1,11 @@
 package banksys;
 
-public class InterfaceClass {
+/**
+ * Manages bank accounts and account operations.
+ */
+public class Bank {
 
+  public void addAccount(BankAccount account){}
+
+  public void getAccount(int id){}
 }

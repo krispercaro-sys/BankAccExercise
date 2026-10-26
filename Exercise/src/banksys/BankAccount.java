@@ -3,74 +3,131 @@ package banksys;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a bank account with deposit, withdrawal, and status management features.
+ */
 public class BankAccount {
 
-    private double balance;
+  private String ownerName;
+  private double balance;
+  private boolean isFrozen;
+  private List<Transaction> transactionHistory;
 
-    private boolean isFrozen;
+  /**
+   * Constructs a BankAccount with the specified owner name.
+   *
+   * 
+   */
+  public BankAccount(String ownerName) {
+    this.ownerName = ownerName;
+    this.balance = 0.0;
+    this.isFrozen = false;
+    this.transactionHistory = new ArrayList<>();
+  }
 
-    private List<Transaction> transactionHistory;
+  /**
+   * Constructs a BankAccount with a default owner name.
+   */
+  public BankAccount() {
+    this("Unknown");
+  }
 
-    public BankAccount() {
-        this.balance = 0.0;
-        this.isFrozen = false;
-        this.transactionHistory = new ArrayList<>();
+  /**
+   * Gets the owner name of the account.
+   *
+   * 
+   */
+  public String getOwnerName() {
+    return this.ownerName;
+  }
+
+  /**
+   * Gets the current balance of the account.
+   *
+   * 
+   */
+  public double getBalance() {
+    return this.balance;
+  }
+
+  /**
+   * Deposits a specified amount into the account.
+   *
+   * 
+   */
+  public void deposit(double amount) {
+    if (isFrozen()) {
+      System.out.println("Account is FROZEN. Unable to transact.");
+      return;
     }
 
-    public void deposit(double amount) {
-        if (isFrozen) {
-            System.out.println("Account is FROZEN. Unable to transact.");
-            return;
-        }
-
-        System.out.println("Amount deposited: " + amount);
-
-        if (amount <= 0) {
-            System.out.println("Invalid amount. Must be greater than 0");
-            return;
-        }
-
-        this.balance += amount;
-        System.out.printf("Current balance: %.2f%n", this.balance);
-
-         this.transactionHistory.add(new Transaction("Deposit", amount));
+    if (amount <= 0) {
+      System.out.println("Invalid amount. Must be greater than 0");
+      return;
     }
 
-    public void withdraw(double amount) {
-        if (isFrozen) {
-            System.out.println("Account is FROZEN. Unable to transact.");
-            return;
-        }
+    System.out.println("Amount deposited: " + amount);
+    this.balance += amount;
+    this.transactionHistory.add(new Transaction("Deposit", amount));
+    System.out.printf("Current balance: %.2f%n", this.balance);
+  }
 
-        System.out.println("Amount withdrawn: " + amount);
-
-        if (amount <= 0) {
-            System.out.println("Invalid amount. Must be greater than 0");
-            return;
-        }
-
-        if (amount > balance) {
-            System.out.printf("Insufficient balance. Current balance: %.2f%n", this.balance);
-            return;
-        }
-
-        this.balance -= amount;
-        System.out.printf("Current balance: %.2f%n", this.balance);
+  /**
+   * Withdraws a specified amount from the account.
+   *
+   * 
+   */
+  public void withdraw(double amount) {
+    if (isFrozen()) {
+      System.out.println("Account is FROZEN. Unable to transact.");
+      return;
     }
 
-    public double getBalance() {
-        return this.balance;
+    if (amount <= 0) {
+      System.out.println("Invalid amount. Must be greater than 0");
+      return;
     }
 
-    public void freezeAccount() {
-        this.isFrozen = true;
+    if (amount > balance) {
+      System.out.printf("Insufficient balance. Current balance: %.2f%n", this.balance);
+      return;
     }
 
-    public void unfreezeAccount() {
-        this.isFrozen = false;
-    }
+    System.out.println("Amount withdrawn: " + amount);
+    this.balance -= amount;
+    this.transactionHistory.add(new Transaction("Withdraw", amount));
+    System.out.printf("Current balance: %.2f%n", this.balance);
+  }
 
-    public boolean isFrozen() {
-        return this.isFrozen;
-    }
+  /**
+   * Gets the transaction history of the account.
+   *
+   * 
+   */
+  public List<Transaction> getTransactionHistory() {
+    return this.transactionHistory;
+  }
+
+  /**
+   * Freezes the account to prevent further transactions.
+   */
+  public void freezeAccount() {
+    this.isFrozen = true;
+  }
+
+  /**
+   * Unfreezes the account to allow transactions.
+   */
+  public void unfreezeAccount() {
+    this.isFrozen = false;
+  }
+
+  /**
+   * Checks whether the account is currently frozen.
+   *
+   * 
+   */
+  public boolean isFrozen() {
+    return this.isFrozen;
+  }
 }

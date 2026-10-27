@@ -37,7 +37,7 @@ public class Transaction {
   public String toString() {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     return String.format(
-        "Transaction [type=%s, amount=%s, time_stamp=%s]",
+        "Transaction [type=%s, amount=%s, time_stamp=%s]\n",
         type, amount, timestamp.format(formatter)
     );
   }

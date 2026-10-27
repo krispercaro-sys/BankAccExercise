@@ -1,7 +1,7 @@
 package exception;
 
 /**
- * Custom exception thrown when an invalid deposit or withdrawal amount is provided.
+ * exception thrown when an invalid deposit or withdrawal amount is provided.
  */
 public class InvalidAmountException extends Exception {
 
@@ -9,7 +9,7 @@ public class InvalidAmountException extends Exception {
   private String message;
 
   /**
-   *.
+   * Exception for invalid amount.
    */
   public InvalidAmountException(String message) {
     super(message);
@@ -17,7 +17,7 @@ public class InvalidAmountException extends Exception {
   }
 
   /**
-   *.
+   * Message.
    */
   @Override
   public String getMessage() {

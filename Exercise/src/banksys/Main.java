@@ -3,7 +3,8 @@ package banksys;
 import java.util.List;
 
 /**
- * Entry point for testing bank account operations, exception handling, and lambda features.
+ * Entry point for testing bank account operations, exception handling,
+ * and lambda features.
  */
 public class Main {
 
@@ -65,9 +66,11 @@ public class Main {
     // Test Case 5
     acc1.freezeAccount();
     run(() -> acc1.withdraw(500));
-    
+
     acc1.unfreezeAccount();
-    acc1.getTransactionHistory().add(new Transaction("Withdraw", 100.0));
+    acc1.getTransactionHistory().add(
+        new Transaction("Withdraw", 100.0)
+    );
     System.out.println("\n========================\n");
     // Test Case 6:
     BankAccountManager accM1 = new BankAccountManager();
@@ -79,7 +82,9 @@ public class Main {
     System.out.println("\n========================\n");
     // Test Case 7
     System.out.println("Sorting transactions by amount...");
-    List<Transaction> sorted = accM1.sortTransactionsByAmount(acc1.getTransactionHistory());
+    List<Transaction> sorted = accM1.sortTransactionsByAmount(
+        acc1.getTransactionHistory()
+    );
     System.out.println(sorted);
   }
 }

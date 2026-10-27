@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents a bank account with deposit, withdrawal, and status management features.
+ * Represents a bank account with deposit, withdrawal, and status
+ * management features.
  */
 public class BankAccount {
 
@@ -48,15 +49,19 @@ public class BankAccount {
    *
    * @param amount the amount to deposit
    * @throws AccountFrozenException if the account is frozen
-   * @throws InvalidAmountException if the deposit amount is less than or equal to zero
+   * @throws InvalidAmountException if the deposit amount is less than
+   *         or equal to zero
    */
-  public void deposit(double amount) throws AccountFrozenException, InvalidAmountException {
+  public void deposit(double amount)
+      throws AccountFrozenException, InvalidAmountException {
     if (isFrozen()) {
-      throw new AccountFrozenException("Account is FROZEN. Unable to transact.");
+      throw new AccountFrozenException(
+          "Account is FROZEN. Unable to transact.");
     }
 
     if (amount <= 0) {
-      throw new InvalidAmountException("Invalid amount. Must be greater than 0");
+      throw new InvalidAmountException(
+          "Invalid amount. Must be greater than 0");
     }
 
     System.out.println("Amount deposited: " + amount);
@@ -70,17 +75,22 @@ public class BankAccount {
    *
    * @param amount the amount to withdraw
    * @throws AccountFrozenException if the account is frozen
-   * @throws InvalidAmountException if the withdrawal amount is less than or equal to zero
-   * @throws InsufficientFundsException if the withdrawal amount exceeds balance
+   * @throws InvalidAmountException if the withdrawal amount is less
+   *         than or equal to zero
+   * @throws InsufficientFundsException if the withdrawal amount
+   *         exceeds balance
    */
   public void withdraw(double amount)
-      throws AccountFrozenException, InvalidAmountException, InsufficientFundsException {
+      throws AccountFrozenException, InvalidAmountException,
+      InsufficientFundsException {
     if (isFrozen()) {
-      throw new AccountFrozenException("Account is FROZEN. Unable to transact.");
+      throw new AccountFrozenException(
+          "Account is FROZEN. Unable to transact.");
     }
 
     if (amount <= 0) {
-      throw new InvalidAmountException("Invalid amount. Must be greater than 0");
+      throw new InvalidAmountException(
+          "Invalid amount. Must be greater than 0");
     }
 
     if (amount > balance) {

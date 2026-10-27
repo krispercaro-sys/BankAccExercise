@@ -1,7 +1,9 @@
+
 package exception;
 
 /**
- * Custom exception thrown when operations are performed on a frozen bank account.
+ * Represents an exception thrown when a frozen bank account
+ * is used for transactions.
  */
 public class AccountFrozenException extends Exception {
 
@@ -9,7 +11,9 @@ public class AccountFrozenException extends Exception {
   private String message;
 
   /**
-   *.
+   * Creates an exception with the specified error message.
+   *
+   * @param message the error message describing the exception
    */
   public AccountFrozenException(String message) {
     super(message);
@@ -17,7 +21,9 @@ public class AccountFrozenException extends Exception {
   }
 
   /**
-   * Returns the detail message string of this exception.
+   * Returns the detail message of this exception.
+   *
+   * @return the exception's error message
    */
   @Override
   public String getMessage() {

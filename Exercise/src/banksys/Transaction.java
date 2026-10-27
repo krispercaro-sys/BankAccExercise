@@ -14,9 +14,6 @@ public class Transaction {
 
   /**
    * Initializes a new Transaction with type and amount.
-   *
-   * @param type the transaction type (e.g., Deposit, Withdraw)
-   * @param amount the monetary value of the transaction
    */
   public Transaction(String type, double amount) {
     this.type = type;

@@ -16,7 +16,7 @@ public class BankAccountManager {
   private int id;
 
   /**
-   * Constructs a new BankAccountManager with empty account storage.
+   *.
    */
   public BankAccountManager() {
     this.accounts = new HashMap<>();
@@ -24,9 +24,7 @@ public class BankAccountManager {
   }
 
   /**
-   * Adds a new bank account if the storage limit has not been reached.
-   *
-   * @param account the account to be added
+   *.
    */
   public void addAccount(BankAccount account) {
     if (accounts.size() >= 100) {
@@ -40,7 +38,7 @@ public class BankAccountManager {
   }
 
   /**
-   * Displays all managed bank accounts and their details.
+   *.
    */
   public void listAccounts() {
     if (accounts.isEmpty()) {
@@ -62,11 +60,7 @@ public class BankAccountManager {
   }
 
   /**
-   * Filters transactions at or above a specified amount using a lambda expression with Predicate.
-   *
-   * @param amount the minimum threshold amount
-   * @param txList the list of transactions to filter
-   * @return a filtered list containing transactions at or above the threshold
+   *.
    */
   public List<Transaction> filterTransactionsAtOrAbove(double amount, List<Transaction> txList) {
     Predicate<Transaction> filterCondition = tx -> tx.getAmount() >= amount;
@@ -76,10 +70,7 @@ public class BankAccountManager {
   }
 
   /**
-   * Sorts transactions by amount in ascending order using a lambda expression.
-   *
-   * @param txList the list of transactions to sort
-   * @return a new list sorted by transaction amount in ascending order
+   *.
    */
   public List<Transaction> sortTransactionsByAmount(List<Transaction> txList) {
     List<Transaction> sortedList = new ArrayList<>(txList);
